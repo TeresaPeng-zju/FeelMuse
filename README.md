@@ -4,9 +4,11 @@
 
 ## 安装
 
-取得仓库后，在仓库根目录运行以下命令（macOS / Linux）。符号链接指向这份仓库，拉取更新后即可使用新版。目标位置已有同名 Skill 时，先检查现有安装。
+首次安装（macOS / Linux）可执行以下命令。已有本仓库时，从仓库根目录执行最后两行即可。符号链接跟随仓库更新；如目标位置已有同名 Skill，请先检查现有安装。
 
 ```sh
+git clone https://github.com/TeresaPeng-zju/FeelMuse.git
+cd FeelMuse
 mkdir -p "$HOME/.agents/skills"
 ln -s "$PWD/skills/feelmuse" "$HOME/.agents/skills/feelmuse"
 ```
