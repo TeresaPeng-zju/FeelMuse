@@ -1,18 +1,63 @@
 <!doctype html>
-<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Orbit · motion reference</title>
-<style>
-*{box-sizing:border-box}body{margin:0;font:18px system-ui;background:#181733;color:#fff}header,footer{padding:15vh 8vw}section{height:230vh}.stage{position:sticky;top:0;height:100vh;overflow:hidden;display:grid;place-items:center;background:#282348}b{position:absolute;left:8vw;top:10vh;z-index:2}.disc,.ring{grid-area:1/1;width:min(38vw,300px);aspect-ratio:1;border-radius:50%;background:#ffd269}.ring{background:none;border:2px solid #a79aff;width:min(68vw,520px)}@media(prefers-reduced-motion:reduce){section{height:auto}.stage{position:relative}.disc,.ring{transform:none!important}}
-</style>
-<header>Orbit studies · scroll to enter</header>
-<section><div class="stage"><b>Plane / 01</b><div class="ring"></div><div class="disc"></div></div></section>
-<footer>End of study</footer>
-<script>
-const scene=document.querySelector('section');
-function paint(){
- const p=Math.max(0,Math.min(1,-scene.getBoundingClientRect().top / Math.max(1,scene.offsetHeight-innerHeight)));
- document.querySelector('.disc').style.transform='translateX('+((p-.5)*52)+'vw) scale('+(0.7+p*.5)+')';
- document.querySelector('.ring').style.transform='translateX('+((.5-p)*19)+'vw)';
-}
-addEventListener('scroll',paint,{passive:true});addEventListener('resize',paint);paint();
-</script></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Orbit · motion reference</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 18px system-ui; background: #181733; color: white; }
+    header, footer { padding: 15vh 8vw; }
+    section { height: 230vh; }
+    .stage {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      background: #282348;
+    }
+    b { position: absolute; left: 8vw; top: 10vh; z-index: 2; }
+    .disc, .ring {
+      grid-area: 1 / 1;
+      aspect-ratio: 1;
+      border-radius: 50%;
+    }
+    .disc { width: min(38vw, 300px); background: #ffd269; }
+    .ring { width: min(68vw, 520px); border: 2px solid #a79aff; }
+    @media (prefers-reduced-motion: reduce) {
+      section { height: auto; }
+      .stage { position: relative; }
+      .disc, .ring { transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>Orbit studies · scroll to enter</header>
+  <section>
+    <div class="stage">
+      <b>Plane / 01</b>
+      <div class="ring"></div>
+      <div class="disc"></div>
+    </div>
+  </section>
+  <footer>End of study</footer>
+  <script>
+    const scene = document.querySelector('section');
+    const disc = document.querySelector('.disc');
+    const ring = document.querySelector('.ring');
+
+    function paint() {
+      const travel = Math.max(1, scene.offsetHeight - innerHeight);
+      const progress = Math.max(0, Math.min(1, -scene.getBoundingClientRect().top / travel));
+      disc.style.transform = `translateX(${(progress - 0.5) * 52}vw) scale(${0.7 + progress * 0.5})`;
+      ring.style.transform = `translateX(${(0.5 - progress) * 19}vw)`;
+    }
+
+    addEventListener('scroll', paint, { passive: true });
+    addEventListener('resize', paint);
+    paint();
+  </script>
+</body>
+</html>
