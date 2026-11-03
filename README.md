@@ -24,4 +24,4 @@ ln -s "$PWD/skills/feelmuse" "$HOME/.agents/skills/feelmuse"
 
 操作现站时请从目标项目启动 Codex，并给出本地入口或预览地址。FeelMuse 使用当前环境可用的浏览器和前端工具。没有浏览器时，视觉验收会标记为待验证。用户只要研究或方案时，会在该阶段交付。
 
-[Skill 入口](skills/feelmuse/SKILL.md) · [何时需要用户决定](skills/feelmuse/references/interaction.md) · [四个验收场景](tests/acceptance.md)
+[Skill 入口](skills/feelmuse/SKILL.md) · [何时需要用户决定](skills/feelmuse/references/interaction.md) · [四个验收场景](tests/acceptance.md) · [实测记录](tests/results.md)
